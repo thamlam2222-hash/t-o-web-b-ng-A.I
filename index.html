@@ -1,3 +1,526 @@
+/* Thiết lập chung */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f7f9f6;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header & Navigation */
+.site-header {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(46, 125, 50, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #2e7d32;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #2e7d32;
+}
+
+/* Hero Section (Xứ Dừa Theme) */
+.hero-section {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 80px 0;
+    border-bottom: 4px solid #a5d6a7;
+}
+
+.hero-grid {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero-avatar-wrapper {
+    text-align: center;
+}
+
+.hero-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ffffff;
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+    margin-bottom: 12px;
+}
+
+.hero-badge {
+    background: #2e7d32;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 280px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: #1b5e20;
+    margin-bottom: 15px;
+}
+
+.highlight {
+    color: #d84315; /* Điểm nhấn màu cam đất ấm áp */
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #388e3c;
+    margin-bottom: 25px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #2e7d32;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #1b5e20;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid #2e7d32;
+    color: #2e7d32;
+}
+
+.btn-outline:hover {
+    background-color: #2e7d32;
+    color: #fff;
+}
+
+/* Tiêu đề chung cho các Section */
+.section {
+    padding: 60px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #1b5e20;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title span::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #81c784;
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+/* About Section */
+.about-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+    border-left: 5px solid #2e7d32;
+    font-size: 1.05rem;
+    color: #4a5568;
+}
+
+/* Bến Tre Feature Section */
+.bentre-section {
+    background-color: #f1f8f2;
+}
+
+.bentre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.bentre-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.05);
+    transition: transform 0.3s;
+}
+
+.bentre-card:hover {
+    transform: translateY(-5px);
+}
+
+.icon-bentre {
+    font-size: 2.5rem;
+    color: #2e7d32;
+    margin-bottom: 15px;
+}
+
+.bentre-card h3 {
+    color: #1b5e20;
+    margin-bottom: 10px;
+}
+
+.bentre-card p {
+    color: #607d8b;
+    font-size: 0.95rem;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.skill-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    transition: transform 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+}
+
+.skill-icon {
+    font-size: 2rem;
+    color: #2e7d32;
+    margin-bottom: 15px;
+}
+
+.skill-card h3 {
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.skill-card p {
+    color: #718096;
+    font-size: 0.95rem;
+}
+
+/* Projects Section */
+.projects-section {
+    background-color: #f1f8f2;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-img-wrapper img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    color: #1b5e20;
+    margin-bottom: 8px;
+}
+
+.project-info p {
+    color: #4a5568;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.project-caption {
+    font-size: 0.85rem;
+    color: #718096;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 8px;
+}
+
+/* Contact Section */
+.contact-section {
+    text-align: center;
+}
+
+.contact-desc {
+    color: #4a5568;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-btn {
+    width: 45px;
+    height: 45px;
+    background-color: #2e7d32;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.social-btn:hover {
+    background-color: #1b5e20;
+    transform: scale(1.1);
+}
+
+/* Footer */
+.site-footer {
+    background-color: #1b5e20;
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 0;
+    font-size: 0.9rem;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Giới Thiệu Cá Nhân - Xứ Dừa Bến Tre</title>
+    <meta name="description" content="Trang web giới thiệu cá nhân kết hợp phong cách văn hóa xứ dừa Bến Tre.">
+    
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <nav class="container nav-container">
+            <a href="#hero" class="logo"><i class="fa-solid fa-tree"></i> BếnTrePortfolio</a>
+            <ul class="nav-links">
+                <li><a href="#about">Về Tôi</a></li>
+                <li><a href="#bentre">Xứ Dừa</a></li>
+                <li><a href="#skills">Kỹ Năng</a></li>
+                <li><a href="#projects">Dự Án</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section (Phong cách Xứ Dừa) -->
+    <section id="hero" class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-avatar-wrapper">
+                <!-- Hãy tạo thư mục images và đưa file avatar.jpg vào đó -->
+                <img src="images/avatar.jpg" alt="Ảnh đại diện" class="hero-avatar">
+                <div class="hero-badge"><i class="fa-solid fa-location-dot"></i> Bến Tre, Việt Nam</div>
+            </div>
+            <div class="hero-content">
+                <h1>Xin chào, tôi là <span class="highlight">[Tên của bạn]</span></h1>
+                <p class="hero-subtitle">Người con đất dừa Bến Tre năng động, sáng tạo và luôn không ngừng học hỏi để phát triển bản thân trong lĩnh vực công nghệ và đời sống.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Liên hệ ngay</a>
+                    <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-briefcase"></i> Xem dự án</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title"><span>Về Bản Thân</span></h2>
+            <div class="about-card">
+                <p>Tôi là một người luôn tìm tòi, học hỏi và mong muốn mang lại giá trị thiết thực cho cộng đồng qua công việc của mình. Mang trong mình sự chân chất, kiên cường như những rặng dừa quê hương, tôi luôn sẵn sàng đối mặt với thử thách và phát triển từng ngày.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bến Tre Feature Section (Điểm nhấn chủ đề địa phương) -->
+    <section id="bentre" class="section bentre-section">
+        <div class="container">
+            <h2 class="section-title"><span>Quê Hương Xứ Dừa</span></h2>
+            <div class="bentre-grid">
+                <div class="bentre-card">
+                    <i class="fa-solid fa-seedling icon-bentre"></i>
+                    <h3>Miệt Vườn Sông的水</h3>
+                    <p>Đất và người Bến Tre với những cù lao xanh ngát, hệ thống sông rạch chằng chịt và tình người nồng hậu.</p>
+                </div>
+                <div class="bentre-card">
+                    <i class="fa-solid fa-hand-holding-heart icon-bentre"></i>
+                    <h3>Tinh Thần Đồng Khởi</h3>
+                    <p>Luôn giữ vững ý chí vươn lên, đổi mới sáng tạo trong học tập, công việc và cuộc sống hiện đại.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <h2 class="section-title"><span>Kỹ Năng & Thế Mạnh</span></h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
+                    <h3>Phát Triển Web</h3>
+                    <p>Xây dựng trang web cá nhân, giao diện hiện đại, tối ưu trải nghiệm mượt mà trên mọi thiết bị.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3>Tư Duy Sáng Tạo</h3>
+                    <p>Giải quyết vấn đề linh hoạt, đưa ra các ý tưởng thiết kế và nội dung thu hút, thực tế.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-comments"></i></div>
+                    <h3>Giao Tiếp & Hợp Tác</h3>
+                    <p>Kết nối tốt với đồng nghiệp, đối tác, tinh thần làm việc nhóm hiệu quả và gắn kết.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <h2 class="section-title"><span>Dự Án Nổi Bật</span></h2>
+            <div class="projects-grid">
+                <!-- Dự án 01 -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <!-- Đảm bảo bạn đã có file project-1.jpg trong thư mục images -->
+                        <img src="images/project-1.jpg" alt="Dự án 01">
+                    </div>
+                    <div class="project-info">
+                        <h3>Dự Án Web Mẫu 01</h3>
+                        <p>Mô tả ngắn gọn về sản phẩm, hệ thống hoặc giải pháp công nghệ đã thực hiện thành công.</p>
+                        <p class="project-caption"><em>Chú thích: Giao diện trang chủ ứng dụng web quản lý cá nhân.</em></p>
+                    </div>
+                </div>
+                <!-- Dự án 02 -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <!-- Đảm bảo bạn đã có file project-2.jpg trong thư mục images -->
+                        <img src="images/project-2.jpg" alt="Dự án 02">
+                    </div>
+                    <div class="project-info">
+                        <h3>Dự Án Web Mẫu 02</h3>
+                        <p>Mô tả ngắn gọn về sản phẩm, hệ thống hoặc giải pháp công nghệ đã thực hiện thành công.</p>
+                        <p class="project-caption"><em>Chú thích: Hệ thống phân tích dữ liệu và báo cáo trực quan.</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title"><span>Kết Nối Với Tôi</span></h2>
+            <p class="contact-desc">Rất vui được kết nối, hợp tác hoặc trò chuyện cùng bạn qua các kênh bên dưới:</p>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://github.com" target="_blank" aria-label="GitHub" class="social-btn"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="mailto:email@example.com" aria-label="Email" class="social-btn"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 [Tên của bạn] - Tự hào quê hương Bến Tre. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Link -->
+    <script src="script.js"></script>
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
