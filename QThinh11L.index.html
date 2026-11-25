@@ -16,18 +16,26 @@
       --border: #e2e8f0;
       --shadow: 0 10px 25px -15px rgba(15, 23, 42, 0.18);
       --radius: 16px;
+      --star-opacity: 0.14;
+      --bamboo-opacity: 0.14;
+      --bamboo-color: #15803d;
+      --bamboo-leaf: #16a34a;
     }
 
     [data-theme="dark"] {
-      --bg: #0b1120;
-      --surface: #111827;
+      --bg: #070d19;
+      --surface: rgba(17, 24, 39, 0.88);
       --surface-alt: #1e293b;
       --text: #f8fafc;
       --muted: #94a3b8;
       --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.15);
+      --accent-soft: rgba(56, 189, 248, 0.16);
       --border: #1f2937;
-      --shadow: 0 14px 30px -15px rgba(0, 0, 0, 0.55);
+      --shadow: 0 14px 30px -15px rgba(0, 0, 0, 0.65);
+      --star-opacity: 0.9;
+      --bamboo-opacity: 0.42;
+      --bamboo-color: #0f291e;
+      --bamboo-leaf: #14532d;
     }
 
     * {
@@ -45,7 +53,96 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.65;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      transition: background-color 0.35s ease, color 0.25s ease;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Lớp trang trí rừng tre & bầu trời đêm đầy sao */
+    .scenery-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .starry-sky {
+      position: absolute;
+      inset: 0;
+      opacity: var(--star-opacity);
+      transition: opacity 0.4s ease;
+      background-image:
+        radial-gradient(1.5px 1.5px at 12% 14%, #e2e8f0 99%, transparent),
+        radial-gradient(2px 2px at 26% 24%, #bae6fd 99%, transparent),
+        radial-gradient(1.2px 1.2px at 41% 10%, #ffffff 99%, transparent),
+        radial-gradient(2.2px 2.2px at 58% 19%, #fef08a 99%, transparent),
+        radial-gradient(1.4px 1.4px at 74% 12%, #ffffff 99%, transparent),
+        radial-gradient(2px 2px at 88% 26%, #bae6fd 99%, transparent),
+        radial-gradient(1.5px 1.5px at 66% 34%, #e2e8f0 99%, transparent),
+        radial-gradient(1.3px 1.3px at 19% 38%, #fef08a 99%, transparent);
+      animation: skyDrift 24s ease-in-out infinite alternate;
+    }
+
+    .star-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: #f8fafc;
+      animation: twinkle 3.6s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.25; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.25); }
+    }
+
+    @keyframes skyDrift {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .bamboo-forest {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 290px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      opacity: var(--bamboo-opacity);
+      transition: opacity 0.4s ease;
+    }
+
+    .bamboo-svg {
+      width: min(360px, 46vw);
+      height: 100%;
+      transform-origin: bottom center;
+      animation: bambooSway 7s ease-in-out infinite;
+    }
+
+    .bamboo-svg.right {
+      transform: scaleX(-1);
+      transform-origin: bottom center;
+      animation: bambooSwayRight 8s ease-in-out infinite;
+    }
+
+    @keyframes bambooSway {
+      0%, 100% { transform: rotate(-1.2deg); }
+      50% { transform: rotate(1.6deg); }
+    }
+
+    @keyframes bambooSwayRight {
+      0%, 100% { transform: scaleX(-1) rotate(-1.4deg); }
+      50% { transform: scaleX(-1) rotate(1.2deg); }
+    }
+
+    /* Đảm bảo nội dung nằm trên lớp nền trang trí */
+    header,
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
     }
 
     a {
@@ -440,6 +537,10 @@
         grid-template-columns: 1fr;
       }
 
+      .bamboo-forest {
+        height: 190px;
+      }
+
       nav {
         display: none;
         position: absolute;
@@ -464,6 +565,49 @@
   </style>
 </head>
 <body>
+  <!-- Họa tiết bầu trời đêm đầy sao & rừng tre -->
+  <div class="scenery-layer" aria-hidden="true">
+    <div class="starry-sky" id="starrySky"></div>
+
+    <div class="bamboo-forest">
+      <svg class="bamboo-svg" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Thân tre 1 -->
+        <rect x="28" y="30" width="12" height="250" rx="4" fill="var(--bamboo-color)" />
+        <line x1="26" y1="95" x2="42" y2="95" stroke="var(--bamboo-leaf)" stroke-width="3" />
+        <line x1="26" y1="165" x2="42" y2="165" stroke="var(--bamboo-leaf)" stroke-width="3" />
+        <line x1="26" y1="225" x2="42" y2="225" stroke="var(--bamboo-leaf)" stroke-width="3" />
+
+        <!-- Thân tre 2 -->
+        <rect x="68" y="65" width="9" height="215" rx="3" fill="var(--bamboo-color)" />
+        <line x1="66" y1="125" x2="79" y2="125" stroke="var(--bamboo-leaf)" stroke-width="2.5" />
+        <line x1="66" y1="190" x2="79" y2="190" stroke="var(--bamboo-leaf)" stroke-width="2.5" />
+
+        <!-- Thân tre 3 -->
+        <rect x="108" y="110" width="7" height="170" rx="3" fill="var(--bamboo-color)" />
+        <line x1="106" y1="170" x2="117" y2="170" stroke="var(--bamboo-leaf)" stroke-width="2" />
+
+        <!-- Tán lá tre -->
+        <path d="M36 60 Q68 38 96 48 Q68 62 36 60 Z" fill="var(--bamboo-leaf)" />
+        <path d="M36 82 Q64 70 86 84 Q60 92 36 82 Z" fill="var(--bamboo-leaf)" />
+        <path d="M74 96 Q104 78 130 88 Q102 102 74 96 Z" fill="var(--bamboo-leaf)" />
+        <path d="M113 135 Q138 122 158 132 Q135 142 113 135 Z" fill="var(--bamboo-leaf)" />
+      </svg>
+
+      <svg class="bamboo-svg right" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="28" y="36" width="12" height="244" rx="4" fill="var(--bamboo-color)" />
+        <line x1="26" y1="100" x2="42" y2="100" stroke="var(--bamboo-leaf)" stroke-width="3" />
+        <line x1="26" y1="172" x2="42" y2="172" stroke="var(--bamboo-leaf)" stroke-width="3" />
+
+        <rect x="68" y="78" width="9" height="202" rx="3" fill="var(--bamboo-color)" />
+        <line x1="66" y1="145" x2="79" y2="145" stroke="var(--bamboo-leaf)" stroke-width="2.5" />
+
+        <path d="M36 64 Q68 42 96 52 Q68 66 36 64 Z" fill="var(--bamboo-leaf)" />
+        <path d="M36 88 Q64 76 86 90 Q60 98 36 88 Z" fill="var(--bamboo-leaf)" />
+        <path d="M74 108 Q104 90 130 100 Q102 114 74 108 Z" fill="var(--bamboo-leaf)" />
+      </svg>
+    </div>
+  </div>
+
   <header>
     <div class="container nav-wrap">
       <a href="#" class="logo">
@@ -705,6 +849,14 @@
       formNote.textContent = `Cảm ơn ${name}! Lời nhắn đã được ghi nhận trên bản xem trước (hãy nối form với dịch vụ nhận email như Formspree nếu muốn nhận thư thật).`;
       contactForm.reset();
     });
-  </script>
-</body>
-</html>
+
+    // Tạo thêm các ngôi sao li ti cho bầu trời đêm
+    const starrySky = document.getElementById("starrySky");
+    if (starrySky) {
+      const starCount = 28;
+      for (let i = 0; i < starCount; i++) {
+        const dot = document.createElement("span");
+        dot.className = "star-dot";
+        const size = (i % 3) + 1.5;
+        dot.style.width = `${size}px`;
+        dot.style.height = `${size}px`; dot.style.top = `${(i * 17
